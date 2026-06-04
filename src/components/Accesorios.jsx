@@ -1,0 +1,63 @@
+import { useState } from "react";
+import { ShoppingCart } from "lucide-react";
+
+/* IMPORTAR IMÁGENES */
+import relo from "../assets/relo.jpg";
+import bol from "../assets/bol.jpg";
+import len from "../assets/len.jpg";
+import col from "../assets/col.jpg";
+
+/* DATOS */
+const productos = [
+  { id: 1, name: "Reloj Smartwatch Samsung Galaxy Watch 5 Pro", price: 699, image: relo },
+  { id: 2, name: "Bolso Cuero Mujer Elegante Marrón Caramel", price: 129, image: bol},
+  { id: 3, name: "Lentes de Sol Polarizados Hombre UV400", price: 89, image: len },
+  { id: 4, name: "Collar Acero Inoxidable Mujer Minimalista", price: 35, image: col },
+];
+
+function ProductoCard({ producto }) {
+  const [agregado, setAgregado] = useState(false);
+
+  return (
+    <div className="card-producto">
+
+      <img src={producto.image} alt={producto.name} />
+
+      <div className="card-contenido">
+        <h3>{producto.name}</h3>
+
+        <p className="precio">S/. {producto.price}</p>
+
+        <button
+          className={`btn-carrito ${agregado ? "agregado" : ""}`}
+          onClick={() => setAgregado(!agregado)}
+        >
+          <ShoppingCart size={14} />
+          {agregado ? " Agregado" : " Agregar"}
+        </button>
+
+      </div>
+    </div>
+  );
+}
+
+function Accesorios() {
+  return (
+    <div className="pagina-productos">
+
+      <div className="header-productos">
+        <h1>Accesorios</h1>
+        <p>Los mejores Relojes, bolsos, lentes y joyas que complementan tu estilo</p>
+      </div>
+
+      <div className="grid-productos">
+        {productos.map((p) => (
+          <ProductoCard key={p.id} producto={p} />
+        ))}
+      </div>
+
+    </div>
+  );
+}
+
+export default Accesorios;

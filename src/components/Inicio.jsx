@@ -1,32 +1,33 @@
-import {
-  Zap,
-  Shirt,
-  Watch,
-  ArrowRight,
-  Star,
-  TruckIcon,
-  ShieldCheck,
-  HeadphonesIcon,
-} from "lucide-react";
+import {Zap,Shirt,Watch,ArrowRight,Star,TruckIcon,ShieldCheck,HeadphonesIcon,} from "lucide-react";
+
+
+/* IMPORTAR IMÁGENES */
+import inicio from "../assets/inicio.jpg";
+import elec from "../assets/elec.jpg";
+import rop from "../assets/rop.jpg";
+import acc from "../assets/acc.jpg";
 
 const categories = [
   {
     icon: Zap,
     title: "Electrónicos",
+    key: "electronicos",
     description: "Laptops, smartphones y más",
-    image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=400",
+    image: elec,
   },
   {
     icon: Shirt,
     title: "Ropa",
+    key: "ropa",
     description: "Moda para todos",
-    image: "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?w=400",
+    image: rop,
   },
   {
     icon: Watch,
     title: "Accesorios",
+    key: "accesorios",
     description: "Relojes, bolsos y más",
-    image: "https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?w=400",
+    image: acc,
   },
 ];
 
@@ -37,7 +38,7 @@ const features = [
   { icon: Star, title: "Calidad garantizada" },
 ];
 
-function Inicio() {
+function Inicio({ onNavigate }) {
   return (
     <div className="inicio">
 
@@ -56,20 +57,17 @@ function Inicio() {
             </p>
 
             <div className="hero-botones">
-              <button className="btn-principal">
+              <button className="btn-principal" onClick={() => onNavigate("electronicos")}>
                 Ver productos <ArrowRight size={18} />
               </button>
-              <button className="btn-secundario">
+              <button className="btn-secundario" onClick={() => onNavigate("contacto")}>
                 Contáctanos
               </button>
             </div>
           </div>
 
           <div className="hero-imagen">
-            <img
-              src="https://images.unsplash.com/photo-1727407209320-1fa6ae60ee05?w=600"
-              alt="compras online"
-            />
+            <img src={inicio} alt="compras online" />
           </div>
 
         </div>
@@ -87,18 +85,58 @@ function Inicio() {
 
       {/* CATEGORÍAS */}
       <section className="categorias">
-        <h2>Categorías</h2>
+      <div className="categorias-grid">
+        {categories.map((cat, i) => (
+          <div 
+            key={i} 
+            className="categoria-card"
+            onClick={() => onNavigate(cat.key)}
+          >
+            <img src={cat.image} alt={cat.title} />
+            <h3>{cat.title}</h3>
+            <p>{cat.description}</p>
 
-        <div className="categorias-grid">
-          {categories.map((cat, i) => (
-            <div key={i} className="categoria-card">
-              <img src={cat.image} alt={cat.title} />
-              <h3>{cat.title}</h3>
-              <p>{cat.description}</p>
+            <div className="categoria-link">
+              Ver {cat.key} <ArrowRight size={16} />
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
       </section>
+      {/* CTA FINAL */}
+      <section className="cta">
+        <h2>¿Listo para comprar?</h2>
+        <p>
+          Únete a miles de peruanos que ya confían en VendeFácil para sus
+          compras diarias.
+        </p>
+
+        <button 
+          className="btn-cta"
+          onClick={() => onNavigate("electronicos")}
+        >
+          Explorar todos los productos
+        </button>
+      </section>
+
+
+      {/* FOOTER */}
+  <footer className="footer">
+    <div className="footer-content">
+      
+      <div className="footer-logo">
+        <div className="logo-icon">
+          <ShieldCheck size={20} color="white" />
+        </div>
+        <span>Vende<span>Fácil</span></span>
+      </div>
+
+      <p className="footer-text">
+        © 2026 VendeFácil. Todos los derechos reservados. Lima, Perú.
+      </p>
+
+    </div>
+  </footer>
 
     </div>
   );
