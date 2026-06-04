@@ -6,6 +6,12 @@ import polo from "../assets/polo.jpg";
 import vestido from "../assets/vestido.jpg";
 import jean from "../assets/jean.jpg";
 import hoo from "../assets/hoo.jpg";
+import jog from "../assets/jog.jpg";
+import camisa from "../assets/camisa.jpg";
+import blas from "../assets/blas.jpg";
+import estam from "../assets/estam.jpg";
+import sho from "../assets/sho.jpg";
+import blum from "../assets/blum.jpg";
 
 /* DATOS */
 const productos = [
@@ -13,6 +19,12 @@ const productos = [
   { id: 2, name: "Vestido Floral Mujer", price: 89, image: vestido},
   { id: 3, name: "eans Skinny Hombre Lavado Oscuro Stretch", price: 69, image: jean },
   { id: 4, name: "Hoodie Mujer Oversize Suave Algodón Francés", price: 2200, image: hoo },
+  { id: 5, name: "Pantalón Jogger mujer", price: 55, image: jog },
+  { id: 6, name: "Camisa Oxford Hombre Cuadros Talla S-XL", price: 65, image: camisa },
+  { id: 7, name: "Blazer Mujer Formal Entallado Oficina", price: 129, image: blas },
+  { id: 8, name: "Polo Estampado Hombre Diseño Urbano", price: 39, image: estam },
+  { id: 9, name: "Short Deportivo Hombre Dry Fit Running", price: 45, image: sho },
+  { id: 10, name: "Blusa Mujer Elegante Seda Artificial Colores", price: 60, image: blum },
 ];
 
 function ProductoCard({ producto }) {
